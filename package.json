@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "nodemon --exec ts-node server/index.ts"
+    "dev": "nodemon --exec ts-node server/index.ts"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
