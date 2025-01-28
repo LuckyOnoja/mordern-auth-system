@@ -9,7 +9,8 @@ const isAuthenticated = (req, res, next) => {
 };
 exports.isAuthenticated = isAuthenticated;
 const isAdmin = (req, res, next) => {
-    if (req.isAuthenticated() && req.user?.role === 'admin') {
+    const user = req.user;
+    if (req.isAuthenticated() && user.role === 'admin') {
         return next();
     }
     res.status(403).send('Access Denied: Admins Only');

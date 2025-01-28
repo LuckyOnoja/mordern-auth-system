@@ -13,8 +13,13 @@ const db_1 = require("./config/db");
 dotenv_1.default.config();
 require("./config/passport");
 const app = (0, express_1.default)();
+// Set views directory path to work in both src and dist
+const viewsPath = process.env.NODE_ENV === "production"
+    ? path_1.default.join(__dirname, "views") // This will resolve to dist/views in production
+    : path_1.default.join(__dirname, "../views"); // This works for development (src/views)
+app.set("views", viewsPath);
+// Set view engine
 app.set("view engine", "ejs");
-app.set("views", path_1.default.join(__dirname, "views"));
 app.use(express_1.default.static(path_1.default.join(__dirname, "../public")));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));

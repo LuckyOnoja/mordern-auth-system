@@ -11,8 +11,16 @@ import "./config/passport";
 
 const app: Application = express();
 
+// Set views directory path to work in both src and dist
+const viewsPath =
+  process.env.NODE_ENV === "production"
+    ? path.join(__dirname, "views") // This will resolve to dist/views in production
+    : path.join(__dirname, "../views"); // This works for development (src/views)
+
+app.set("views", viewsPath);
+
+// Set view engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());

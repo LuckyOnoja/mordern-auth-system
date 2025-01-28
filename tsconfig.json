@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "typeRoots": ["node_modules/@types", "src/types"] , 
+    "types": ["express"] , 
     "target": "ES2020",
     "module": "CommonJS",
     "rootDir": "./src",
@@ -7,5 +9,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true
-  }
+  }, 
+  "include": ["src/**/*", "views/**/*"],
+  "exclude": ["node_modules"] 
 }

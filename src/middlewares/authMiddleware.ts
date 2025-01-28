@@ -8,7 +8,8 @@ export const isAuthenticated = (req: Request, res: Response, next: NextFunction)
 };
 
 export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
-  if (req.isAuthenticated() && req.user?.role === 'admin') {
+  const user = req.user as Express.User;  
+  if (req.isAuthenticated() && user.role === 'admin') {
     return next();
   }
   res.status(403).send('Access Denied: Admins Only');
